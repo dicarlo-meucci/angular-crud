@@ -1,0 +1,17 @@
+.buttons {
+    width: 100%;
+    text-align: center;
+    margin: auto;
+    background: #424242;
+    opacity: .8;
+}
+
+.buttons button {
+    border-radius: 0;
+    border-collapse: collapse;
+    margin: auto;
+    padding: 10px;
+    border: 1px solid black;
+    background: #101010;
+    color: #FFF;
+}

@@ -1,0 +1,61 @@
+<div class="buttons">
+    <button (click)="firstPage()">first</button>
+    <button (click)="prevPage()">previous</button>
+    <button> {{pageCount+1}} </button> 
+    <button (click)="nextPage()">next</button>
+    <button (click)="lastPage()">last</button>
+</div>
+
+<table mat-table [dataSource]="data._embedded.employees" class="mat-elevation-z8" *ngIf="data">
+    <!--- Note that these columns can be defined in any order.
+          The actual rendered columns are set as a property on the row definition" -->
+
+    <!-- Position Column -->
+    <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef> ID </th>
+        <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="firstName">
+        <th mat-header-cell *matHeaderCellDef> First Name </th>
+        <td mat-cell *matCellDef="let element"> {{element.firstName}} </td>
+    </ng-container>
+
+    <!-- Weight Column -->
+    <ng-container matColumnDef="lastName">
+        <th mat-header-cell *matHeaderCellDef> Last Name </th>
+        <td mat-cell *matCellDef="let element"> {{element.lastName}} </td>
+    </ng-container>
+
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="gender">
+        <th mat-header-cell *matHeaderCellDef> Gender </th>
+        <td mat-cell *matCellDef="let element"> {{element.gender}} </td>
+    </ng-container>
+
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="birthDate">
+        <th mat-header-cell *matHeaderCellDef> Birth Date </th>
+        <td mat-cell *matCellDef="let element"> {{element.birthDate}} </td>
+    </ng-container>
+
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="hireDate">
+        <th mat-header-cell *matHeaderCellDef> Hire Date </th>
+        <td mat-cell *matCellDef="let element"> {{element.hireDate}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef>
+            <button (click)="showNewDialog()" mat-button>Add new</button>
+        </th>
+        <td mat-cell *matCellDef="let row">
+            <button (click)="fireEmployee(row.id)" mat-button>Fire</button>
+            <button mat-button (click)="showEditDialog(row)">Edit</button>
+        </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="columns"></tr>
+    <tr mat-row *matRowDef="let row; columns: columns;"></tr>
+</table>
